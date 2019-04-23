@@ -1,0 +1,25 @@
+{
+    "name": "epicsweb/php-ci-messages",
+    "description": "",
+    "keywords": [
+        "CodeIgniter",
+        "Composer",
+        "installer"
+    ],
+    "homepage": "https://github.com/epicsweb/php-ci-messages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matheus Pereira",
+            "email": "contato@matheusp.com.br"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": ">=5.6"
+    }
+}
