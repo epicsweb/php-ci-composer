@@ -1,6 +1,6 @@
-# PHP CI - Message
+# PHP - Message
 
-This library prepares the data and send it to an API for sending emails, sms, and other
+This library prepares the data and send it to an API for sending emails, sms and other for Code Igniter and Laravel
 
 ## Installation
 
@@ -11,6 +11,8 @@ composer require epicsweb/php-ci-messages
 ```
 
 ## Configuration
+
+#### CodeIgniter
 
 Create a new file in your code igniter application folder: **/application/config/phpmessages.php**
 
@@ -24,7 +26,19 @@ $config['pm_user']	= 'YOUR_PWD_USERS';
 $config['pm_pass']	= 'YOUR_PWD_PASSWORD';
 ```
 
+#### Laravel
+
+Set in your **.env*** file
+
+```
+PM_URL='YOUR_BASE_URL_API';
+PM_USER='YOUR_PWD_USERS';
+PM_PASS='YOUR_PWD_PASSWORD';
+```
+
 ## Usage
+
+#### CodeIgniter
 
 Change file **/application/config/config.php**:
 
@@ -34,7 +48,9 @@ $config['composer_autoload'] = FALSE;
 $config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
 ```
 
-Call the "enviar" function of this library with an array like unique param
+#### CodeIgniter & Laravel
+
+Call the "send_mail" function of this library with an array like unique param
 
 ```php
 $data = [
@@ -59,8 +75,10 @@ $data = [
     'tipo'      => [
         'email'
     ]
-
 ];
+
+$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->send_email( $data )
  ```
 
 ### License

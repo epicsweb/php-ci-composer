@@ -2,8 +2,15 @@
 
 namespace Epicsweb;
 
-class PhpCiMessages
+class PhpMessages
 {
+
+	//CONSTRUCT
+	public function __construct($framework = 'ci') {
+
+		$this->$framework = $framework;
+
+	}
 
     //FUNÇAO QUE EXECUTA O CURL
     private function executeCurl($param) {
@@ -12,16 +19,33 @@ class PhpCiMessages
 
     	if( is_array($param) && $param['url'] && $param['data'] ) {
 
-			//LOAD THE CONFIG FILE
-	    	$ci->config->load('phpmessages');
+	    	//VERIFICA FRAMEWORK
+	    	switch ($this->framework) {
+	    		case 'laravel':
+	    			
+	    			$url 			= env('PM_URL');
+	    			$userpwd 		= env('PM_USER');
+	    			$passpwd 		= env('PM_PASS');
 
-	    	//URL
-	    	$url 			= $ci->config->item('pm_url');
+	    		break;
+	    		case 'ci':
+	    			
+	    			//LOAD THE CONFIG FILE
+	    			$ci->config->load('phpmessages');
+			    	$url 			= $ci->config->item('pm_url');
+	    			$userpwd 		= $ci->config->item('pm_user');
+	    			$passpwd 		= $ci->config->item('pm_pass');
+
+	    		break;
+	    		default:
+
+	    			return false;
+
+	    		break;
+	    	}
+
+	    	//PREPARA OS DADS
 	    	$url 			= $url . $param['url'];
-
-	    	//USER AND PASSWORD (AUTH)
-	    	$userpwd 		= $ci->config->item('pm_user');
-	    	$passpwd 		= $ci->config->item('pm_pass');
 	    	$auth			= $userpwd . ':' . $passpwd;
   
 	        switch ($param['method']) {
