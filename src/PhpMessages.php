@@ -5,10 +5,12 @@ namespace Epicsweb;
 class PhpMessages
 {
 
+	private $framework;
+
 	//CONSTRUCT
 	public function __construct($framework = 'ci') {
 
-		$this->$framework = $framework;
+		$this->framework = $framework;
 
 	}
 

@@ -57,8 +57,8 @@ $data = [
     'app'       => [
         'enviado_por'   => (string) 'aplicativo',
         'app_id'        => (int) 1,
-        'envio_id'      => (int) 0,
-        'para_id'       => (int) '000' //CLIENT_ID
+        'envio_id'      => (int) 1,
+        'para_id'       => (int) 1 //CLIENT_ID
     ],
     'header'    => [
         'para'          => (string) 'for@email.com',
@@ -78,7 +78,7 @@ $data = [
 ];
 
 $message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
-$message = $message->send_email( $data )
+$message = $message->send_mail( $data )
  ```
 
 ### License
