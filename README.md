@@ -14,26 +14,24 @@ composer require epicsweb/php-ci-messages
 
 #### CodeIgniter
 
-Create a new file in your code igniter application folder: **/application/config/phpmessages.php**
+Create or edit a file in your code igniter application folder and set this vars: **/application/config/epicsweb.php**
 
 ```php
 <?php if( !defined('BASEPATH')) exit('No direct script access allowed');
 
 $config['pm_url']	= 'YOUR_BASE_URL_API';
-
 $config['pm_user']	= 'YOUR_PWD_USERS';
-
 $config['pm_pass']	= 'YOUR_PWD_PASSWORD';
 ```
 
 #### Laravel
 
-Set in your **.env*** file
+Set in your **.env** file
 
 ```
-PM_URL='YOUR_BASE_URL_API';
-PM_USER='YOUR_PWD_USERS';
-PM_PASS='YOUR_PWD_PASSWORD';
+PM_URL=YOUR_BASE_URL_API;
+PM_USER=YOUR_PWD_USERS;
+PM_PASS=YOUR_PWD_PASSWORD;
 ```
 
 ## Usage

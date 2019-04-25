@@ -33,7 +33,7 @@ class PhpMessages
 	    		case 'ci':
 	    			
 	    			//LOAD THE CONFIG FILE
-	    			$ci->config->load('phpmessages');
+	    			$ci->config->load('epicsweb');
 			    	$url 			= $ci->config->item('pm_url');
 	    			$userpwd 		= $ci->config->item('pm_user');
 	    			$passpwd 		= $ci->config->item('pm_pass');
