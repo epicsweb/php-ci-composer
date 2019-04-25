@@ -17,8 +17,6 @@ class PhpMessages
     //FUNÇAO QUE EXECUTA O CURL
     private function executeCurl($param) {
 
-    	$ci =& get_instance();
-
     	if( is_array($param) && $param['url'] && $param['data'] ) {
 
 	    	//VERIFICA FRAMEWORK
@@ -33,6 +31,7 @@ class PhpMessages
 	    		case 'ci':
 	    			
 	    			//LOAD THE CONFIG FILE
+	    			$ci =& get_instance();
 	    			$ci->config->load('epicsweb');
 			    	$url 			= $ci->config->item('pm_url');
 	    			$userpwd 		= $ci->config->item('pm_user');
