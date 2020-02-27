@@ -101,5 +101,46 @@ class PhpMessages
             'method'    => 'post'
         ]);
     }
+
+    // ------------- MAILCHIMP -------------
+    //FUNCTION TO CREATE A MEMBER IN LIST
+    public function mailchimp_create($message)
+    {
+        return $this->executeCurl([
+            'url'   	=> 'lists/mailchimp',
+            'data'    	=> $message,
+            'method'    => 'post'
+        ]);
+    }
+
+    //FUNCTION TO CREATE A MEMBER IN LIST
+    public function mailchimp_delete($message)
+    {
+        return $this->executeCurl([
+            'url'   	=> 'lists/mailchimp_delete',
+            'data'    	=> $message,
+            'method'    => 'post'
+        ]);
+    }
+
+    //FUNCTION TO CREATE A MEMBER IN LIST
+    public function mailchimp_edit($message)
+    {
+        return $this->executeCurl([
+            'url'   	=> 'lists/mailchimp_edit',
+            'data'    	=> $message,
+            'method'    => 'post'
+        ]);
+    }
+
+    //FUNCTION TO CREATE A MEMBER IN LIST
+    public function mailchimp_tag($message)
+    {
+        return $this->executeCurl([
+            'url'   	=> 'lists/mailchimp_tag',
+            'data'    	=> $message,
+            'method'    => 'post'
+        ]);
+    }
     
 }
