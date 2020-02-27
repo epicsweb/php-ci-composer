@@ -1,3 +1,4 @@
+
 # PHP - Message
 
 This library prepares the data and send it to an API for sending emails, sms and other for Code Igniter and Laravel
@@ -19,9 +20,9 @@ Create or edit a file in your code igniter application folder and set this vars:
 ```php
 <?php if( !defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['pm_url']	= 'YOUR_BASE_URL_API';
-$config['pm_user']	= 'YOUR_PWD_USERS';
-$config['pm_pass']	= 'YOUR_PWD_PASSWORD';
+$config['pm_url']   = 'YOUR_BASE_URL_API';
+$config['pm_user']  = 'YOUR_PWD_USERS';
+$config['pm_pass']  = 'YOUR_PWD_PASSWORD';
 ```
 
 #### Laravel
@@ -78,6 +79,77 @@ $data = [
 $message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->send_mail( $data )
  ```
+
+##### New SMS
+
+Call the "send_sms" function of this library with an array like unique param to send a new sms
+
+```php
+$sms = [
+    'app'       => [
+        'enviado_por'   => (string) 'aplicativo',
+        'app_id'        => (int) 1,
+        'envio_id'      => (int) 1,
+        'para_id'       => (int) 1 //CLIENT_ID
+    ],
+    'header'    => [
+        'para'          => '5517911112222'
+        'de_nome'       => 'EPICS',
+        'de'            => 'epics@epics.com.br',
+    ],
+    'corpo'     => [
+        'assunto'       => (string) 'Message Here',
+        'html'          => (string) 'Message Here',
+        'texto'         => (string) 'Message Here',
+    ],
+    'tipo'      => [
+        'sms'
+    ]
+];
+$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->send_sms( $sms );
+```
+
+##### Mailchimp Manage
+
+###### Edit
+
+Call the "mailchimp_edit" function of this library with an array like unique param to edit a member in Mailchimp list. Obs: if the member doesn't exist, the function will call mailchimp_create automatically.
+
+```php
+$data = [
+    'id'                = 'list id',
+    'email_address'     = 'user email',
+    'email_type'        = 'email type',
+    'status'            = 'member status',
+    'merge_fields' => [
+        'name'          => (string) 'User name',
+        'country'       => (string) 'User country',
+        'state'         => (string) 'User state',
+        'city'          => (string) 'User city',
+        'phone'         => (string) 'User phone',
+    ]
+];
+$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->mailchimp_edit( $data );
+```
+
+###### Edit Tags
+
+Call the "mailchimp_tag" function of this library with an array like unique param to edit tags from member in Mailchimp list.
+
+```php
+$data = [
+    'id'                = 'list id',
+    'email_address'     = 'user email',
+    'tags' => [
+        'name'          => (string) 'Tag Name',
+        'status'        => (string) 'Tag Status' //active/inactive
+    ]
+];
+$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->mailchimp_edit( $data );
+```
 
 ### License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/epicsweb/mensagens-php/blob/master/LICENSE) file for details
