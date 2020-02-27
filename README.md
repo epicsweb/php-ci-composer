@@ -118,7 +118,7 @@ Call the "mailchimp_edit" function of this library with an array like unique par
 
 ```php
 $data = [
-    'id'                = 'list id',
+    'id'                = (string) 'abc123', // id da lista
     'email_address'     = 'user email',
     'email_type'        = 'email type',
     'status'            = 'member status',
