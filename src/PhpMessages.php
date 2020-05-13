@@ -102,6 +102,20 @@ class PhpMessages
         ]);
     }
 
+    //FUNCTION TO SEND A PUSH NOTIFICATION
+    public function send_push($message)
+    {
+        if( isset($message['recipients']) && count($message['recipients']) > 0 ) {
+
+            return $this->executeCurl([
+                'url'       => 'push/send',
+                'data'      => $message,
+                'method'    => 'post'
+            ]);
+
+        } else return false;
+    }
+    
     // ------------- MAILCHIMP -------------
     //FUNCTION TO CREATE A MEMBER IN LIST
     public function mailchimp_create($message)
