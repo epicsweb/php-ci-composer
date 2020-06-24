@@ -82,77 +82,130 @@ class PhpMessages
 
     }
 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // MAIL
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    //FUNCTION TO SEND A EMAIL
+    public function send_mail($data)
+    {
+        return $this->executeCurl([
+            'url'       => 'send',
+            'data'      => $data,
+            'method'    => 'post'
+        ]);
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // SMS
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
     //FUNCTION TO SEND A SMS
-    public function send_sms($message)
+    public function send_sms($data)
     {
         return $this->executeCurl([
             'url'   	=> 'sendsms',
-            'data'    	=> $message,
+            'data'    	=> $data,
             'method'    => 'post'
         ]);
     }
-    
-    //FUNCTION TO SEND A EMAIL
-    public function send_mail($message)
-    {
-        return $this->executeCurl([
-            'url'   	=> 'send',
-            'data'    	=> $message,
-            'method'    => 'post'
-        ]);
-    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // PUSH
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
     //FUNCTION TO SEND A PUSH NOTIFICATION
-    public function send_push($message)
+    public function send_push($data)
     {
-        if( isset($message['recipients']) && count($message['recipients']) > 0 ) {
-
+        if( isset($data['recipients']) && count($data['recipients']) > 0 ) {
             return $this->executeCurl([
                 'url'       => 'push/send',
-                'data'      => $message,
+                'data'      => $data,
                 'method'    => 'post'
             ]);
-
         } else return false;
     }
+
+    //FUNCTION TO SEND A PUSH NOTIFICATION - ACCOUNT ID
+    public function push_create( $data )
+    {
+        return $this->executeCurl([
+            'url'       => 'push/create',
+            'data'      => $data,
+            'method'    => 'post'
+        ]);
+    }
+
+    // GET ACTIVE TOKENS FROM USER
+    public function push_tokens( $data )
+    {
+        return $this->executeCurl([
+            'url'       => 'push/tokens',
+            'data'      => $data,
+            'method'    => 'get'
+        ]);
+    }
+
+    // CREATE A NEW TOKEN
+    public function push_token_create( $data )
+    {
+        return $this->executeCurl([
+            'url'       => 'push/token_create',
+            'data'      => $data,
+            'method'    => 'post'
+        ]);
+    }
+
+    // DELETE TOKEN
+    public function push_token_remove( $data )
+    {
+        return $this->executeCurl([
+            'url'       => 'push/token_remove',
+            'data'      => $data,
+            'method'    => 'post'
+        ]);
+    }
     
-    // ------------- MAILCHIMP -------------
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // LEAD - MAILCHIMP
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
     //FUNCTION TO CREATE A MEMBER IN LIST
-    public function mailchimp_create($message)
+    public function mailchimp_create($data)
     {
         return $this->executeCurl([
             'url'   	=> 'lists/mailchimp',
-            'data'    	=> $message,
+            'data'    	=> $data,
             'method'    => 'post'
         ]);
     }
 
     //FUNCTION TO CREATE A MEMBER IN LIST
-    public function mailchimp_delete($message)
+    public function mailchimp_delete($data)
     {
         return $this->executeCurl([
             'url'   	=> 'lists/mailchimp_delete',
-            'data'    	=> $message,
+            'data'    	=> $data,
             'method'    => 'post'
         ]);
     }
 
     //FUNCTION TO CREATE A MEMBER IN LIST
-    public function mailchimp_edit($message)
+    public function mailchimp_edit($data)
     {
         return $this->executeCurl([
             'url'   	=> 'lists/mailchimp_edit',
-            'data'    	=> $message,
+            'data'    	=> $data,
             'method'    => 'post'
         ]);
     }
 
     //FUNCTION TO CREATE A MEMBER IN LIST
-    public function mailchimp_tag($message)
+    public function mailchimp_tag($data)
     {
         return $this->executeCurl([
             'url'   	=> 'lists/mailchimp_tag',
-            'data'    	=> $message,
+            'data'    	=> $data,
             'method'    => 'post'
         ]);
     }
