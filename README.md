@@ -79,6 +79,7 @@ $data = [
 $message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->send_mail( $data )
  ```
+------------
 
 ##### New SMS
 
@@ -109,6 +110,44 @@ $sms = [
 $message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->send_sms( $sms );
 ```
+------------
+
+##### Push
+
+###### Create Push
+```php
+$data = [
+    'user_id'         => 1,
+    'title'              => 'New push notification',
+    'body'            => 'Description of your push notification', 
+    'customData'  => []
+];
+$this->message->push_create($data);```
+
+###### Tokens - Get All
+```php
+$data = [
+    'user_id'    => 1
+];
+$this->message->push_tokens($data);```
+
+###### Tokens - Create One
+```php
+$data = [
+    'user_id'    => 1,
+    'token'      => 'a1b2c3d4f5',
+    'device'     => 'IOS|ANDROID|WEB'
+];
+$this->message->push_token_create($data);```
+
+###### Tokens - Remove One
+```php
+$data = [
+    'token'    =>  'a1b2c3d4f5'
+];
+$this->message->push_remove($data);```
+
+------------
 
 ##### Mailchimp Manage
 
@@ -150,6 +189,8 @@ $data = [
 $message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->mailchimp_edit( $data );
 ```
+
+------------
 
 ### License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/epicsweb/mensagens-php/blob/master/LICENSE) file for details
