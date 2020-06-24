@@ -122,7 +122,8 @@ $data = [
     'body'          => 'Description of your push notification', 
     'customData'    => []
 ];
-$this->message->push_create($data);```
+$this->message->push_create($data);
+```
 
 ###### Tokens - Get All
 ```php
