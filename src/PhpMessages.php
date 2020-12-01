@@ -66,6 +66,9 @@ class PhpMessages
 	            break;
 	            case 'get':
 
+                    if( $param['data'] && is_array($param['data']) )
+                        $url = $url . '?' . http_build_query($param['data'], NULL, '&');
+
 	                $curl = curl_init($url);
 	                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	                curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_ANY);

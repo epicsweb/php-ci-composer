@@ -76,7 +76,7 @@ $data = [
     ]
 ];
 
-$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->send_mail( $data )
  ```
 ------------
@@ -107,7 +107,7 @@ $sms = [
         'sms'
     ]
 ];
-$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->send_sms( $sms );
 ```
 ------------
@@ -173,7 +173,7 @@ $data = [
         'phone'         => (string) 'User phone',
     ]
 ];
-$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->mailchimp_edit( $data );
 ```
 
@@ -190,10 +190,61 @@ $data = [
         'status'        => (string) 'Tag Status' //active/inactive
     ]
 ];
-$message = new PhpMessage( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
 $message = $message->mailchimp_edit( $data );
 ```
+------------
 
+##### Notifications Manager
+
+###### Notifications - Insert or Update
+Call the "notifications_create_or_update" function to create or update user configuration about many notifications.
+```php
+$data = [
+    'users_id'      => 1,
+    'contract_id'   => 1,
+    'custom'        => NULL,
+    'items'         => [
+        [
+            'name'          => 'store_new',
+            'email'         => 0,
+            'pusher'        => 1,
+            'smsm'          => 0
+        ],[
+            'name'          => 'store_stock',
+            'email'         => 0,
+            'pusher'        => 1,
+            'smsm'          => 0
+        ]
+    ]
+];
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->notifications_create_or_update( $data );
+```
+
+###### Notifications - Get All
+Use "notifications_get_all" function to get configurations about all notifications.
+```php
+$data = [
+    'users_id'      => 1,
+    'system'        => 'store',
+    'custom'        => NULL
+];
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->notifications_get_all( $data );
+```
+
+###### Notifications - Get One
+Use "notifications_get_one" function to get configurations about one notifications.
+```php
+$data = [
+    'users_id'      => 1,
+    'system'        => 'store',
+    'custom'        => NULL
+];
+$message = new PhpMessages( 'ci' ); // 'ci' or 'laravel' framework params (default = ci)
+$message = $message->notifications_get_one( $data );
+```
 ------------
 
 ### License
