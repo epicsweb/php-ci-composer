@@ -209,5 +209,39 @@ class PhpMessages
             'method'    => 'post'
         ]);
     }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+    // NOTIFICATIONS - PUSH
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    // CREATE OR UPDATE A NEW NOTIFICATION
+    public function notifications_create_or_update($data)
+    {
+        return $this->executeCurl([
+            'url'       => 'notifications/notifications_create_or_update',
+            'data'      => $data,
+            'method'    => 'post'
+        ]);
+    }
+
+    // RETURN ALL NOTIFICATIONS FROM A USER
+    public function notifications_get_all($data)
+    {
+        return $this->executeCurl([
+            'url'       => 'notifications/get_all_user',
+            'data'      => $data,
+            'method'    => 'get'
+        ]);
+    }
+
+    // RETURN ONE NOTIFICATION FROM A USER
+    public function notifications_get_one($data)
+    {
+        return $this->executeCurl([
+            'url'       => 'notifications/get_one_user',
+            'data'      => $data,
+            'method'    => 'get'
+        ]);
+    }
     
 }
