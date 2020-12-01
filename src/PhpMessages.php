@@ -218,7 +218,7 @@ class PhpMessages
     public function notifications_create_or_update($data)
     {
         return $this->executeCurl([
-            'url'       => 'notifications/notifications_create_or_update',
+            'url'       => 'notifications/create_or_update',
             'data'      => $data,
             'method'    => 'post'
         ]);
